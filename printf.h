@@ -25,7 +25,7 @@ typedef struct func
 void _putchar(char);
 void _puts(char *);
 
-/* haven't been made yet */
+/* functions for printing characters and strings */
 void printf_char(va_list);
 void printf_str(va_list);
 

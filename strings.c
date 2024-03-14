@@ -22,7 +22,7 @@ void printf_str(va_list args)
 
 	if (str == NULL)
 	{
-		_puts("(NULL)");
+		_puts("(nil)");
 	}
 	else
 	{

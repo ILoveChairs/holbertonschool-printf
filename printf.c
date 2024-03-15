@@ -24,9 +24,7 @@ int (*get_print(char c))(va_list)
 	for (i = 0; i < 5; i++)
 	{
 		if (funcs[i].c == c)
-		{
-			return (funcs->f);
-		}
+			return (funcs[i].f);
 	}
 	return (NULL);
 }
@@ -57,9 +55,7 @@ int _printf(const char *format, ...)
 		if (porcentaje_flag)
 		{
 			if (format[i] == '%')
-			{
 				len += _putchar('%');
-			}
 			else
 			{
 				fpointer = get_print(format[i]);
@@ -74,13 +70,9 @@ int _printf(const char *format, ...)
 			porcentaje_flag = 0;
 		}
 		else if (format[i] == '%')
-		{
-			 porcentaje_flag = 1;
-		}
+			porcentaje_flag = 1;
 		else
-		{
 			len += _putchar(format[i]);
-		}
 	}
 	if (porcentaje_flag)
 		return (-1);

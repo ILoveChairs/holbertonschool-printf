@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string.h>
 
 /**
 * printf_char - Prints a single character.
@@ -11,10 +10,8 @@
 int printf_char(va_list args)
 {
 	char c = va_arg(args, int);
-
-	_putchar(c);
-
-	return (1);
+	
+	return (_putchar(c));
 }
 
 /**
@@ -26,12 +23,14 @@ int printf_char(va_list args)
 */
 int printf_str(va_list args)
 {
+	int len;
 	char *str = va_arg(args, char *);
 
-	if (str == NULL)
+	if (!str)
 	{
-		str = "(nil)";
+		str = "(null)";
 	}
 
-	return (_puts(str));
+	len = _puts(str);
+	return (len);
 }

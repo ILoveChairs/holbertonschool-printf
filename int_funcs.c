@@ -65,5 +65,5 @@ int printf_unsigned(va_list args)
 		digit /= 10;
 		len++;
 	}
-	return (0);
+	return (len);
 }

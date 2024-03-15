@@ -1,31 +1,37 @@
-#include "printf.h"
+#include "main.h"
 #include <string.h>
 
 /**
-* printf_char - prints a single character.
+* printf_char - Prints a single character.
+*
 * @args: va_list containing the character to print.
+*
+* Return: Always 1.
 */
-void printf_char(va_list args)
+int printf_char(va_list args)
 {
 	char c = va_arg(args, int);
 
 	_putchar(c);
+
+	return (1);
 }
 
 /**
-* printf_str - prints a string.
+* printf_str - Prints a string.
+*
 * @args: va_list containing the string to print.
+*
+* Return: Length of printed string.
 */
-void printf_str(va_list args)
+int printf_str(va_list args)
 {
 	char *str = va_arg(args, char *);
 
 	if (str == NULL)
 	{
-		_puts("(nil)");
+		str = "(nil)";
 	}
-	else
-	{
-		_puts(str);
-	}
+
+	return (_puts(str));
 }

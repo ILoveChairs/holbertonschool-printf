@@ -17,17 +17,17 @@
  */
 typedef struct func
 {
-	char *c;
-	void (*f)(va_list);
+	char c;
+	int (*f)(va_list);
 } func;
 
 /* from put_funcs.c */
-void _putchar(char);
-void _puts(char *);
+int _putchar(char);
+int _puts(char *);
 
 /* functions for printing characters and strings */
-void printf_char(va_list);
-void printf_str(va_list);
+int printf_char(va_list);
+int printf_str(va_list);
 
 /* haven't been made yet*/
 char *_itoa(char *, int);
@@ -35,17 +35,18 @@ char *_ftoa(char *, float);
 char *_dtoa(char *, double);
 
 /* functions for printing integers */
-void printf_int(va_list);
-void printf_unsigned(va_list);
+int printf_int(va_list);
+int printf_unsigned(va_list);
 
 /* haven't been made yet */
-void printf_float(va_list);
-void printf_double(va_list);
+int printf_float(va_list);
+int printf_double(va_list);
 
 /* haven't been made yet */
-void printf_pointer(va_list);
+int printf_pointer(va_list);
 
-/* haven't been made yet */
-void _printf(char*, ...);
+/* Main function, printf.c */
+int (*get_function(char))(va_list);
+int _printf(const char *format, ...);
 
 #endif

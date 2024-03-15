@@ -2,24 +2,45 @@
 
 /**
  * _putchar -	Prints a char.
- *		Made it void but can also return what write() returns.
- * @c: Char to print.
  *
+ * @c:		Char to print.
  *
+ * Return:	Always 1.
  */
-void _putchar(char c)
+int _putchar(char c)
 {
-	write(1, &c, 1);
+	return (write(1, &c, 1));
+}
+
+/**
+ * _strlen -	Returns length of passed string.
+ *
+ * @str:	String to get the length of.
+ *
+ * Return:	Length of str.
+ */
+int _strlen(char *str)
+{
+	int len;
+
+	len = 0;
+	while (str[len])
+	{
+		len++;
+	}
+
+	return (len);
 }
 
 /**
  * _puts -	Prints string as is.
  *		(without ending in end of line).
- * @str: Str to print, doesn't check if null.
  *
+ * @str:	Str to print, doesn't check if null.
  *
+ * Return:	Length of string printed.
  */
-void _puts(char *str)
+int _puts(char *str)
 {
 	int i;
 
@@ -27,5 +48,6 @@ void _puts(char *str)
 	{
 		_putchar(str[i]);
 	}
-}
 
+	return (i);
+}

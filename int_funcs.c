@@ -1,11 +1,13 @@
-#include "printf.h"
+#include "main.h"
 
 /**
-* printf_int - Print an integer
-* @args: Argument to print
-* Return: Number of characters printed
+* printf_int - Prints an integer.
+*
+* @args: Integer to print.
+*
+* Return: Number of characters printed.
 */
-void printf_int(va_list args)
+int printf_int(va_list args)
 {
 	long int n = va_arg(args, int);
 	long int num;
@@ -32,14 +34,17 @@ void printf_int(va_list args)
 		digit /= 10;
 		len++;
 	}
+	return (0);
 }
 
 /**
-* printf_unsigned - Prints an unsigned integer
-* @args: Argument to print
-* Return: Number of characters printed
+* printf_unsigned - Prints an unsigned integer.
+*
+* @args: Unsigned integer to print.
+*
+* Return: Number of characters printed.
 */
-void printf_unsigned(va_list args)
+int printf_unsigned(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	unsigned int num;
@@ -55,9 +60,10 @@ void printf_unsigned(va_list args)
 	while (digit >= 1)
 	{
 		divalue = num / digit;
-		_putchar(unit + '0');
+		_putchar(divalue + '0');
 		num -= divalue * digit;
 		digit /= 10;
 		len++;
 	}
+	return (0);
 }

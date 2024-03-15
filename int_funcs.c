@@ -34,7 +34,7 @@ int printf_int(va_list args)
 		digit /= 10;
 		len++;
 	}
-	return (0);
+	return (len);
 }
 
 /**

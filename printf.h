@@ -34,7 +34,7 @@ char *_itoa(char *, int);
 char *_ftoa(char *, float);
 char *_dtoa(char *, double);
 
-/* haven't been made yet */
+/* functions for printing integers */
 void printf_int(va_list);
 void printf_unsigned(va_list);
 

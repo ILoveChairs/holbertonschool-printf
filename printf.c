@@ -47,6 +47,7 @@ int _printf(const char *format, ...)
 	int (*fpointer)(va_list);
 	va_list args;
 
+	len = 0;
 	if (!format)
 		return (-1);
 	va_start(args, format);
@@ -64,6 +65,11 @@ int _printf(const char *format, ...)
 				fpointer = get_print(format[i]);
 				if (fpointer)
 					len += fpointer(args);
+				else
+				{
+					len += _putchar('%');
+					len += _putchar(format[i]);
+				}
 			}
 			porcentaje_flag = 0;
 		}
@@ -76,6 +82,8 @@ int _printf(const char *format, ...)
 			len += _putchar(format[i]);
 		}
 	}
+	if (porcentaje_flag)
+		return (-1);
 	va_end(args);
 	return (len);
 }

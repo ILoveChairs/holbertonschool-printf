@@ -245,7 +245,7 @@
      printf("\n---------------\n");
      printf("Test 26");
      printf("\nexpected: ");
-     a = printf("Le dicen %c%c la rompe saracatunga, %s %s", 'l', 'a', "falsas", NULL);
+     a = printf("Le dicen %c%c la rompe corazones, %s %s", 'l', 'a', "falsas", NULL);
      printf("\nobtained: ");
      fflush(stdout);
      b = _printf("Le dicen %c%c la rompe corazones, %s %s", 'l', 'a', "falsas", NULL);

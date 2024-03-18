@@ -70,10 +70,6 @@ int printf_double(va_list);
 /* Pointer printing, from --- */
 int printf_pointer(va_list);
 
-/* ... */
-int print_binary(va_list arg);
-int print_octal(va_list arg);
-
 /** PRINTF **/
 /* Main function, from printf.c */
 int (*get_function(char))(va_list);

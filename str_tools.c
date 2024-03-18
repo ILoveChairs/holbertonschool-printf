@@ -51,7 +51,7 @@ int _puts(char *str)
 	{
 		for (i = 0; *str && i < 1024; i++)
 			buffer[i] = *(str++);
-		write(1, buffer, i + 1);
+		write(1, buffer, i);
 		if (i == 1024)
 			str += 1024;
 	}

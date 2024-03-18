@@ -18,10 +18,15 @@ int (*get_print(char c))(va_list)
 		{'s', printf_str},
 		{'i', printf_int},
 		{'d', printf_int},
-		{'u', printf_unsigned}
+		{'u', printf_unsigned},
+		{'o', printf_un_octal},
+		{'x', printf_un_hex},
+		{'X', printf_un_heX},
+		{'b', printf_un_binary},
+		{'%', printf_char}
 	};
 
-	for (i = 0; i < 5; i++)
+	for (i = 0; funcs[i].c != '%'; i++)
 	{
 		if (funcs[i].c == c)
 			return (funcs[i].f);

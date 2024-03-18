@@ -26,15 +26,16 @@ int _get_first_digit(unsigned int integer, int format)
 }
 
 /**
- * _get_reminders -	
+ * _get_reminders -	Get the reminder of all the divisions of digits below.
  *
- * @integer:		
+ * @integer:		Unsigned int to be converted.
  *
- * @format:		
+ * @format:		Len of numbers[].
  *
- * @digit:		
+ * @digit:		Current Digit.
  *
- * Return:		
+ * Return:		Reminder of all the divisions of (integer / digit)
+ *			below until it reaches 0.
  */
 int _get_reminders(unsigned int integer, int format, int digit)
 {
@@ -45,7 +46,8 @@ int _get_reminders(unsigned int integer, int format, int digit)
 	if (digit == 0)
 		return (0);
 
-	tmp = (integer - _get_reminders(integer, format, digit)) % _pow(format, digit);
+	tmp = integer - _get_reminders(integer, format, digit);
+	tmp %= _pow(format, digit);
 
 	return (tmp + _get_reminders(integer, format, digit));
 }

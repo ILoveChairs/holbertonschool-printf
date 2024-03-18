@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 
 /**
  * _putchar -	Prints a char.
@@ -43,11 +44,18 @@ int _strlen(char *str)
 int _puts(char *str)
 {
 	int i;
+	char *buffer;
 
-	for (i = 0; str[i]; i++)
+	buffer = malloc(1024);
+	while (*str)
 	{
-		_putchar(str[i]);
+		for (i = 0; *str && i < 1024; i++)
+			buffer[i] = *(str++);
+		write(1, buffer, i + 1);
+		if (i == 1024)
+			str += 1024;
 	}
 
+	free(buffer);
 	return (i);
 }

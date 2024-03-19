@@ -56,6 +56,13 @@ int printf_un_heX(va_list args)
 	return (len);
 }
 
+/**
+ * printf_un_binary -	Prints unsigned int from va_list as binary.
+ *
+ * @args:		va_list to take unsigned int.
+ *
+ * Return:		Number of characters printed.
+ */
 int printf_un_binary(va_list args)
 {
 	int len;

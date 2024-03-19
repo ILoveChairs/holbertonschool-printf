@@ -44,18 +44,20 @@ int _strlen(char *str)
 int _puts(char *str)
 {
 	int i;
+	int len;
 	char *buffer;
 
+	len = 0;
 	buffer = malloc(1024);
 	while (*str)
 	{
 		for (i = 0; *str && i < 1024; i++)
 			buffer[i] = *(str++);
-		write(1, buffer, i);
+		len += write(1, buffer, i);
 		if (i == 1024)
 			str += 1024;
 	}
 
 	free(buffer);
-	return (i);
+	return (len);
 }

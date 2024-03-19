@@ -80,22 +80,30 @@ int _ito_print(int integer)
 	int digit_pos;
 	int first_digit;
 
+	if (integer > 0)
+	{
+		integer *= -1;
+	}
+
 	len = 0;
 	int_len = _intlen(integer) - 1;
 	digit_pos = _pow(10, int_len);
 
-	for (; int_len >= 0; int_len--)
+	while (int_len >= 0)
 	{
 		first_digit = integer / digit_pos;
-
+		
+		if (first_digit < 0)
+			first_digit *= -1;
 		len += _putchar(first_digit + 48);
 
-		integer -= first_digit * digit_pos;
+		integer += first_digit * digit_pos;
+
 		digit_pos /= 10;
+		int_len--;
 	}
 
 	return (len);
 }
-
 
 

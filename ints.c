@@ -17,11 +17,7 @@ int printf_int(va_list args)
 	len = 0;
 
 	if (n < 0)
-	{
-		_putchar('-');
-		n *= -1;
-		len++;
-	}
+		len += _putchar('-');
 
 	len += _ito_print(n);
 
@@ -42,7 +38,7 @@ int printf_unsigned(va_list args)
 
 	n = va_arg(args, unsigned int);
 
-	len = _ito_print(n);
+	len = _uto_print(n);
 
 	return (len);
 }

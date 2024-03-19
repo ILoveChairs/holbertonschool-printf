@@ -29,6 +29,7 @@ typedef struct func_pair
 } func;
 
 /** TOOLS **/
+
 /* Base printing functions, also strlen, from str_tools.c */
 int _strlen(char *);
 int _putchar(char);
@@ -40,6 +41,10 @@ int _intlen(int);
 char *_itoa(char *, int);
 int _ito_print(int);
 
+/* Unsigned int manipulation tools, from unsigned_tools.c */
+int _uintlen(unsigned int);
+int _uto_print(unsigned int);
+
 /* Octal and hexadecimal conversion tools, from octahex_tools.c */
 int _get_first_digit(unsigned int, int);
 int _max_recursive(unsigned int, char *, int, int);
@@ -49,6 +54,7 @@ int _max_converter(unsigned int, char *);
 char *_dtoa(char *, double);
 
 /** PRINTING FUNCTIONS **/
+
 /* String and char printing, from strings.c */
 int printf_char(va_list);
 int printf_str(va_list);
@@ -71,8 +77,10 @@ int printf_double(va_list);
 int printf_pointer(va_list);
 
 /** PRINTF **/
+
 /* Main function, from printf.c */
 int (*get_function(char))(va_list);
+int _printf_porcentaje(char, va_list);
 int _printf(const char *format, ...);
 
 #endif

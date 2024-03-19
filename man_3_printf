@@ -1,0 +1,60 @@
+# cat ./man_3_printf
+." Process this file with
+." groff -man -Tascii man_3_printf
+." example man page taken from https://www.golinuxcloud.com/create-man-page-template-linux-with-examples/
+
+.TH printf(3)
+
+.Sh NAME
+.B _printf
+- Prints string where you can embed the contents of the variables you pass as arguments. Tries to copy the functionality of printf().
+
+.SH SYNOPSIS
+.B _printf
+(
+.RB |FORMAT|
+.RB [|VARIABLES|]
+)
+
+.SH DESCRIPTION
+.B _printf
+Prints the passed string format replacing all valid instances of a % with the contents of the next variadic argument. It returns the length of the output to stdout.  A valid % instance is followed by format chars. If no characters follow a % or format is null, it returns -1.
+
+Formatting options
+
+.RS
+.nf
+- 'c' = character.
+- 's' = string.
+- 'i' or 'd' = integer.
+- 'u' = unsigned integer.
+- 'b' = unsigned to binary.
+- 'o' = unsigned to octal.
+- 'x' = unsigned to hex.
+- 'X' = unsigned to hex but letters are capitalized.
+- 'S' = format special characters and print string.
+- 'p' = pointer.
+.RE
+
+.SH EXAMPLES
+.TP
+.BI _printf
+("Hello %s", "world!");
+.TP
+.PP
+--$"Hello world!"
+.TP
+.BI _printf
+("I'm %i years old. %s is a bit older.", 19, "Hernan")
+.TP
+.PP
+--$"I'm 19 years old. Hernan is a bit older."
+
+.SH SEE ALSO
+.BR printf()
+
+.SH CREDITS
+.PP
+Matias Davezac and Hernan Alegresa from Holberton School.
+
+

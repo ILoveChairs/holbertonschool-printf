@@ -76,7 +76,7 @@ void _uto_print(unsigned int, buffer_t *);
 
 /* Octal and hexadecimal conversion tools, from octahex_tools.c */
 int _get_first_digit(unsigned int, int);
-void _max_recursive(unsigned int, char *, int, int, buffer_t *);
+void _max_unrecursive(unsigned int, char *, int, char *);
 void _max_converter(unsigned int, char *, buffer_t *);
 
 /** PRINTING FUNCTIONS **/

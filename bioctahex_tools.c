@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 
@@ -17,43 +18,17 @@ int _get_first_digit(unsigned int integer, int format)
 
 	digit = 1;
 
-	while (integer / _pow(format, digit) != 0)
+	while (integer != 0)
 	{
 		digit++;
+		integer /= format;
 	}
 
 	return (digit);
 }
 
 /**
- * _get_reminders -	Get the reminder of all the divisions of digits below.
- *
- * @integer:		Unsigned int to be converted.
- *
- * @format:		Len of numbers[].
- *
- * @digit:		Current Digit.
- *
- * Return:		Reminder of all the divisions of (integer / digit)
- *			below until it reaches 0.
- */
-int _get_reminders(unsigned int integer, int format, int digit)
-{
-	unsigned int tmp;
-
-	digit--;
-
-	if (digit == 0)
-		return (0);
-
-	tmp = integer - _get_reminders(integer, format, digit);
-	tmp %= _pow(format, digit);
-
-	return (tmp + _get_reminders(integer, format, digit));
-}
-
-/**
- * _max_recursive -	Converts and prints each digit of integer
+ * _max_unrecursive -	Converts and puts in string each digit of integer
  *			to the specified format, for example hexadecimal.
  *
  * @integer:		Number to be converted and printed.
@@ -64,24 +39,22 @@ int _get_reminders(unsigned int integer, int format, int digit)
  * @format:		16 for hexadecimal, 8 for octal, 2 for binary.
  *			Basically $numbers len.
  *
- * @digit:		First digit position of the formatted form of $integer.
- *			Decreases until 0.
- *
- * @buffer:		Buffer.
+ * @str:		String to add each digit.
  */
-void _max_recursive(unsigned int integer, char *numbers, int format,
-		int digit, buffer_t *buffer)
+void _max_unrecursive(unsigned int integer, char *numbers, int format,
+		char *str)
 {
 	unsigned int to_print;
+	int i;
 
-	if (digit != 0)
+	i = 0;
+	while (integer != 0)
 	{
-		to_print = integer - _get_reminders(integer, format, digit);
-		to_print %= _pow(format, digit);
-		to_print /= _pow(format, digit - 1);
-		_buffer_add(numbers[to_print], buffer);
+		to_print = integer % format;
 
-		_max_recursive(integer, numbers, format, digit - 1, buffer);
+		str[i++] = numbers[to_print];
+
+		integer /= format;
 	}
 }
 
@@ -100,6 +73,7 @@ void _max_converter(unsigned int integer, char *numbers, buffer_t *buffer)
 {
 	int format;
 	int digit;
+	char *str;
 
 	if (!numbers)
 		return;
@@ -113,7 +87,19 @@ void _max_converter(unsigned int integer, char *numbers, buffer_t *buffer)
 	format = _strlen(numbers);
 	digit = _get_first_digit(integer, format);
 
-	_max_recursive(integer, numbers, format, digit, buffer);
+	str = malloc(digit + 1);
+	if (!str)
+		return;
+
+	str[digit] = 0;
+
+	_max_unrecursive(integer, numbers, format, str);
+
+	_reverse_string(str);
+
+	_buffer_add_str(str, buffer);
+
+	free(str);
 }
 
 

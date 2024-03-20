@@ -55,7 +55,7 @@ int printf_reverse(va_list args)
 }
 
 /**
- * printf_reverse -	Prints the string from va_list with a rotation of 13.
+ * printf_rot13 -	Prints the string from va_list with a rotation of 13.
  *
  * @args:		va_list containing string.
  *

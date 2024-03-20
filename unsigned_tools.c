@@ -13,7 +13,7 @@ int _uintlen(unsigned int integer)
 	unsigned int len;
 
 	if (integer == 0)
-                return (1);
+		return (1);
 
 	for (len = 0; integer != 0; len++)
 	{

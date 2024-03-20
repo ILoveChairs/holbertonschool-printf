@@ -1,7 +1,7 @@
 Printf is a c function that prints a string to stdout.
 
 As argument it recieves a formatted string where it replaces the content
-of the next variable that was passed when it sees a '%' char followed by 
+of the next variable that was passed when it sees a '%' char followed by
 the variable type or the format of how you want it printed. Returns
 length of output to stdout.
 

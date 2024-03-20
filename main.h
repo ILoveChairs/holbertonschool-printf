@@ -30,10 +30,12 @@ typedef struct func_pair
 
 /** TOOLS **/
 
-/* Base printing functions, also strlen, from str_tools.c */
+/* Base printing functions, also string manipulation, from str_tools.c */
 int _strlen(char *);
 int _putchar(char);
 int _puts(char *);
+char _reverse_string(char *);
+char _rot13(char *);
 
 /* Int manipulation tools, from int_tools.c */
 int _pow(int, int);
@@ -58,6 +60,8 @@ char *_dtoa(char *, double);
 /* String and char printing, from strings.c */
 int printf_char(va_list);
 int printf_str(va_list);
+int printf_reverse(va_list);
+int printf_rot13(va_list);
 
 /* Int and unsigned int printing, from ints.c */
 int printf_int(va_list);

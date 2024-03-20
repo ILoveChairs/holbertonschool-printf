@@ -92,7 +92,7 @@ int _ito_print(int integer)
 	while (int_len >= 0)
 	{
 		first_digit = integer / digit_pos;
-		
+
 		if (first_digit < 0)
 			first_digit *= -1;
 		len += _putchar(first_digit + 48);

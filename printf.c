@@ -23,6 +23,8 @@ int (*get_print(char c))(va_list)
 		{'x', printf_un_hex},
 		{'X', printf_un_heX},
 		{'b', printf_un_binary},
+		{'r', printf_reverse},
+		{'R', printf_rot13},
 		{'%', printf_char}
 	};
 

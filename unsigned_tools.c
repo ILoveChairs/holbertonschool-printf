@@ -31,7 +31,7 @@ int _uintlen(unsigned int integer)
  * Description:	Compared to utoa, you have to go from left to right
  *		which is quite a hassle.
  *
- * Return:	Number of chars printed.
+ * @buffer:	Buffer.
  */
 void _uto_print(unsigned int integer, buffer_t *buffer)
 {

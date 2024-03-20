@@ -7,9 +7,17 @@
  * struct buffer_t -	Buffer that calls write each 1024 characters.
  *
  * @len:	Current length of used buffer.
+ *
  * @len_total:	Length of all characters printed.
+ *
  * @content:	Content of the buffer. Malloc'd.
  *
+ * Description:	Functions add a char to content[len++] and check
+ *		if it reached the limit.
+ *		If it does it prints out content, resets len and adds
+ *		to len_total.
+ *		At the end of printf it checks if len > 0 to print if
+ *		content was written but haven't reached limit.
  */
 typedef struct buffer_t
 {

@@ -67,9 +67,10 @@ int _get_reminders(unsigned int integer, int format, int digit)
  * @digit:		First digit position of the formatted form of $integer.
  *			Decreases until 0.
  *
- * Return:		Length of output.
+ * @buffer:		Buffer.
  */
-void _max_recursive(unsigned int integer, char *numbers, int format, int digit, buffer_t *buffer)
+void _max_recursive(unsigned int integer, char *numbers, int format,
+		int digit, buffer_t *buffer)
 {
 	unsigned int to_print;
 
@@ -93,7 +94,7 @@ void _max_recursive(unsigned int integer, char *numbers, int format, int digit, 
  *			an hexadecimal list would be
  *			"0123456789abcdef"
  *
- * Return:		Length of output.
+ * @buffer:		Buffer.
  */
 void _max_converter(unsigned int integer, char *numbers, buffer_t *buffer)
 {
@@ -101,12 +102,12 @@ void _max_converter(unsigned int integer, char *numbers, buffer_t *buffer)
 	int digit;
 
 	if (!numbers)
-		return ;
+		return;
 
 	if (integer == 0)
 	{
 		_buffer_add(numbers[0], buffer);
-		return ;
+		return;
 	}
 
 	format = _strlen(numbers);

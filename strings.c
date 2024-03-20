@@ -5,7 +5,7 @@
 *
 * @args:	va_list containing the character to print.
 *
-* Return:	1 if print was successful, -1 if not.
+* @buffer:	Buffer.
 */
 void printf_char(va_list args, buffer_t *buffer)
 {
@@ -17,7 +17,7 @@ void printf_char(va_list args, buffer_t *buffer)
 *
 * @args:	va_list containing the string to print.
 *
-* Return:	Length of printed string.
+* @buffer:	Buffer.
 */
 void printf_str(va_list args, buffer_t *buffer)
 {
@@ -34,7 +34,7 @@ void printf_str(va_list args, buffer_t *buffer)
  *
  * @args:		va_list containing string.
  *
- * Return:		Length of printed string.
+ * @buffer:		Buffer.
  */
 void printf_reverse(va_list args, buffer_t *buffer)
 {
@@ -53,7 +53,7 @@ void printf_reverse(va_list args, buffer_t *buffer)
  *
  * @args:		va_list containing string.
  *
- * Return:		Length of printed string.
+ * @buffer:		Buffer.
  */
 void printf_rot13(va_list args, buffer_t *buffer)
 {

@@ -2,9 +2,9 @@
 #include <unistd.h>
 
 /**
- * _write_buffer -	Writes buffer's content to stdout.
+ * _buffer_write -	Writes buffer's content to stdout.
  *
- * @buffer:		Buffer to flush.
+ * @buffer:		Buffer write on.
  */
 void _buffer_write(buffer_t *buffer)
 {
@@ -14,7 +14,7 @@ void _buffer_write(buffer_t *buffer)
 }
 
 /**
- * _check_buffer -	Checks if buffer reaches max capacity.
+ * _buffer_check -	Checks if buffer reaches max capacity.
  *			Writes if it did.
  *
  * @buffer:		Buffer to check.
@@ -28,11 +28,11 @@ void _buffer_check(buffer_t *buffer)
 }
 
 /**
- * _buffer_add -	
+ * _buffer_add -	Adds character to buffer.
  *
- * @c:			
+ * @c:			Character.
  *
- * @buffer:		
+ * @buffer:		Buffer.
  */
 void _buffer_add(char c, buffer_t *buffer)
 {
@@ -41,15 +41,19 @@ void _buffer_add(char c, buffer_t *buffer)
 }
 
 /**
- * _puts -      Prints string as is.
+ * _buffer_add_str -      Prints string as is.
  *              (without ending in end of line).
  *
  * @str:        Str to print, doesn't check if null.
+ *
+ * @buffer:	Buffer.
  */
 void _buffer_add_str(char *str, buffer_t *buffer)
 {
-        while (*str)
-        {
-                _buffer_add(*str++, buffer);
-        }
+	while (*str)
+	{
+		_buffer_add(*str++, buffer);
+	}
 }
+
+

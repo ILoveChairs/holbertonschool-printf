@@ -71,7 +71,7 @@ char *_itoa(char *str, int integer)
  * Description:	Compared to itoa, you have to go from left to right
  *		which is quite a hassle.
  *
- * Return:	Number of chars printed.
+ * @buffer:	Buffer.
  */
 void _ito_print(int integer, buffer_t *buffer)
 {

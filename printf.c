@@ -48,7 +48,7 @@ void (*get_print(char c))(va_list, buffer_t *)
  * @args:		va_list, passed to be pass along to
  *			the function it gets.
  *
- * Return:		Length of all characters printed.
+ * @buffer:		Buffer.
  */
 void _printf_porcentaje(char typer, va_list args, buffer_t *buffer)
 {
@@ -79,15 +79,19 @@ void _printf_porcentaje(char typer, va_list args, buffer_t *buffer)
  * _printf_iteration -	Shortening _printf by dividing task into functions.
  *			this one iterates through format.
  *
- * @:			
- * @:			
+ * @format:		Formatted string.
  *
- * Return:		Length of output.
+ * @args:		va_list with variables.
+ *
+ * @buffer:		Buffer.
+ *
+ * Return:		0 if successful, -1 if error.
  */
 int _printf_iteration(const char *format, va_list args, buffer_t *buffer)
 {
 	int porcentaje_flag;
 
+	porcentaje_flag = 0;
 	while (*format)
 	{
 		if (porcentaje_flag)
@@ -101,7 +105,7 @@ int _printf_iteration(const char *format, va_list args, buffer_t *buffer)
 		}
 		else
 		{
-			_buffer_add('%', buffer);
+			_buffer_add(*format, buffer);
 		}
 
 		format++;

@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-* printf_int - Prints an integer.
+* printf_int -	Prints an integer.
 *
-* @args: Integer to print.
+* @args:	Integer to print.
 *
-* Return: Number of characters printed.
+* @buffer:	Buffer.
 */
 void printf_int(va_list args, buffer_t *buffer)
 {
@@ -20,11 +20,11 @@ void printf_int(va_list args, buffer_t *buffer)
 }
 
 /**
-* printf_unsigned - Prints an unsigned integer.
+* printf_unsigned -	Prints an unsigned integer.
 *
-* @args: Unsigned integer to print.
+* @args:		Unsigned integer to print.
 *
-* Return: Number of characters printed.
+* @buffer:		Buffer.
 */
 void printf_unsigned(va_list args, buffer_t *buffer)
 {

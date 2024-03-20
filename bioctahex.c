@@ -5,7 +5,7 @@
  *
  * @args:		va_list to take unsigned int.
  *
- * Return:		Number of characters printed.
+ * @buffer:		Buffer.
  */
 void printf_un_octal(va_list args, buffer_t *buffer)
 {
@@ -20,7 +20,7 @@ void printf_un_octal(va_list args, buffer_t *buffer)
  *
  * @args:		va_list to take unsigned int.
  *
- * Return:		Number of characters printed.
+ * @buffer:		Buffer.
  */
 void printf_un_hex(va_list args, buffer_t *buffer)
 {
@@ -35,7 +35,7 @@ void printf_un_hex(va_list args, buffer_t *buffer)
  *
  * @args:		va_list to take unsigned int.
  *
- * Return:		Number of characters printed.
+ * @buffer:		Buffer.
  */
 void printf_un_heX(va_list args, buffer_t *buffer)
 {
@@ -49,7 +49,7 @@ void printf_un_heX(va_list args, buffer_t *buffer)
  *
  * @args:		va_list to take unsigned int.
  *
- * Return:		Number of characters printed.
+ * @buffer:		Buffer.
  */
 void printf_un_binary(va_list args, buffer_t *buffer)
 {
@@ -57,3 +57,6 @@ void printf_un_binary(va_list args, buffer_t *buffer)
 
 	_max_converter(va_arg(args, unsigned int), binary, buffer);
 }
+
+
+

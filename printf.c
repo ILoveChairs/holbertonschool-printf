@@ -115,7 +115,7 @@ int _printf(const char *format, ...)
 			porcentaje_flag = 1;
 		else
 		{
-			if (buffer_len == 1024)
+			if (buffer_len == 1025)
 			{
 				len += write(sizeof(char), buffer, buffer_len);
 				buffer_len = 0;

@@ -61,6 +61,7 @@ void _buffer_add_str(char *, buffer_t *);
 
 /* String manipulation, from str_tools.c */
 int _strlen(char *);
+char *_strcpy(char *, char *);
 char *_reverse_string(char *);
 char *_rot13(char *);
 

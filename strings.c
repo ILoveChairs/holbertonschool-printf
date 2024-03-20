@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
 * printf_char -	Prints a single character from va_list and returns 1.
@@ -38,14 +39,22 @@ void printf_str(va_list args, buffer_t *buffer)
  */
 void printf_reverse(va_list args, buffer_t *buffer)
 {
-	char *str = va_arg(args, char *);
+	char *passed_str;
+	char *copied_str;
 
-	if (!str)
-		str = "(null)";
+	passed_str = va_arg(args, char *);
 
-	_reverse_string(str);
+	copied_str = malloc(_strlen(passed_str));
+	if (!copied_str)
+		return;
 
-	_buffer_add_str(str, buffer);
+	_strcpy(copied_str, passed_str);
+
+	_reverse_string(copied_str);
+
+	_buffer_add_str(copied_str, buffer);
+
+	free(copied_str);
 }
 
 /**
@@ -57,14 +66,22 @@ void printf_reverse(va_list args, buffer_t *buffer)
  */
 void printf_rot13(va_list args, buffer_t *buffer)
 {
-	char *str = va_arg(args, char *);
+	char *passed_str;
+	char *copied_str;
 
-	if (!str)
-		str = "(null)";
+	passed_str = va_arg(args, char *);
 
-	_rot13(str);
+	copied_str = malloc(_strlen(passed_str));
+	if (!copied_str)
+		return;
 
-	_buffer_add_str(str, buffer);
+	_strcpy(copied_str, passed_str);
+
+	_rot13(copied_str);
+
+	_buffer_add_str(copied_str, buffer);
+
+	free(copied_str);
 }
 
 

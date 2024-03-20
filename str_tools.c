@@ -21,6 +21,31 @@ int _strlen(char *str)
 }
 
 /**
+ * _strcpy -	Copies src to dest.
+ *
+ * @src:	Source string.
+ *
+ * @dest:	Destiny string.
+ *
+ * Return:	(dest)
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	for (i = 0; *src; src++)
+	{
+		*dest = *src;
+		dest = dest + 1;
+		i = i + 1;
+	}
+
+	*dest = *src;
+	dest = dest - i;
+	return (dest);
+}
+
+/**
  * _reverse_string -	Reverses given string.
  *
  * @str:		String to reverse.
@@ -55,16 +80,16 @@ char *_reverse_string(char *str)
  */
 char *_rot13(char *str)
 {
-	int i;
 	char c;
 
-	for (i = 0; str[i]; i++)
+	while (*str)
 	{
-		c = str[i];
+		c = *str;
 		if ((c >= 77 && c <= 90) || (c >= 110 && c <= 122))
 			c -= 26;
 		c += 13;
-		str[i] = c;
+		*str = c;
+		str++;
 	}
 
 	return (str);

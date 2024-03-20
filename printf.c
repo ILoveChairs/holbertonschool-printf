@@ -115,12 +115,13 @@ int _printf(const char *format, ...)
 			porcentaje_flag = 1;
 		else
 		{
-			if (buffer_len == 1023)
-			{
-				len += write(sizeof(char), buffer, buffer_len);
-				buffer_len = 0;
-			}
 			buffer[buffer_len++] = format[i];
+		}
+
+		if (buffer_len == 1024 || porcentaje_flag)
+		{
+			len += write(sizeof(char), buffer, buffer_len);
+			buffer_len = 0;
 		}
 	}
 	if (buffer_len > 0)

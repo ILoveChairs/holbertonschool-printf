@@ -72,13 +72,12 @@ int _get_reminders(unsigned int integer, int format, int digit)
 int _max_recursive(unsigned int integer, char *numbers, int format, int digit)
 {
 	int len;
-	int to_print;
-	unsigned int t_integer;
+	unsigned int to_print;
 
 	if (digit != 0)
 	{
-		t_integer = integer - _get_reminders(integer, format, digit);
-		to_print = t_integer % _pow(format, digit);
+		to_print = integer - _get_reminders(integer, format, digit);
+		to_print %= _pow(format, digit);
 		to_print /= _pow(format, digit - 1);
 		len = _putchar(numbers[to_print]);
 

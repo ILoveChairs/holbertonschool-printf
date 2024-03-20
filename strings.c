@@ -7,9 +7,9 @@
 *
 * Return:	1 if print was successful, -1 if not.
 */
-int printf_char(va_list args)
+void printf_char(va_list args, buffer_t *buffer)
 {
-	return (_putchar(va_arg(args, int)));
+	_buffer_add(va_arg(args, int), buffer);
 }
 
 /**
@@ -19,17 +19,14 @@ int printf_char(va_list args)
 *
 * Return:	Length of printed string.
 */
-int printf_str(va_list args)
+void printf_str(va_list args, buffer_t *buffer)
 {
-	int len;
 	char *str = va_arg(args, char *);
 
 	if (!str)
 		str = "(null)";
 
-	len = _puts(str);
-
-	return (len);
+	_buffer_add_str(str, buffer);
 }
 
 /**
@@ -39,9 +36,8 @@ int printf_str(va_list args)
  *
  * Return:		Length of printed string.
  */
-int printf_reverse(va_list args)
+void printf_reverse(va_list args, buffer_t *buffer)
 {
-	int len;
 	char *str = va_arg(args, char *);
 
 	if (!str)
@@ -49,9 +45,7 @@ int printf_reverse(va_list args)
 
 	_reverse_string(str);
 
-	len = _puts(str);
-
-	return (len);
+	_buffer_add_str(str, buffer);
 }
 
 /**
@@ -61,9 +55,8 @@ int printf_reverse(va_list args)
  *
  * Return:		Length of printed string.
  */
-int printf_rot13(va_list args)
+void printf_rot13(va_list args, buffer_t *buffer)
 {
-	int len;
 	char *str = va_arg(args, char *);
 
 	if (!str)
@@ -71,9 +64,7 @@ int printf_rot13(va_list args)
 
 	_rot13(str);
 
-	len = _puts(str);
-
-	return (len);
+	_buffer_add_str(str, buffer);
 }
 
 

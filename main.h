@@ -1,7 +1,22 @@
-#ifndef PRINTF
-#define PRINTF
+#ifndef _PRINTF
+#define _PRINTF
 
 #include <stdarg.h>
+
+/**
+ * struct buffer_t -	Buffer that calls write each 1024 characters.
+ *
+ * @len:	Current length of used buffer.
+ * @len_total:	Length of all characters printed.
+ * @content:	Content of the buffer. Malloc'd.
+ *
+ */
+typedef struct buffer_t
+{
+	unsigned int len;
+	unsigned int len_total;
+	char content[1024];
+} buffer_t;
 
 /**
  * struct func_pair -	Struct to use in printf.c for knowing
@@ -25,66 +40,64 @@
 typedef struct func_pair
 {
 	char c;
-	int (*f)(va_list);
+	void (*f)(va_list, buffer_t *);
 } func;
 
 /** TOOLS **/
 
-/* Base printing functions, also string manipulation, from str_tools.c */
+/* Buffer manipulation, from buffer_tools.c */
+void _buffer_write(buffer_t *);
+void _buffer_check(buffer_t *);
+void _buffer_add(char, buffer_t *);
+void _buffer_add_str(char *, buffer_t *);
+
+/* String manipulation, from str_tools.c */
 int _strlen(char *);
-int _putchar(char);
-int _puts(char *);
-char _reverse_string(char *);
-char _rot13(char *);
+char *_reverse_string(char *);
+char *_rot13(char *);
 
 /* Int manipulation tools, from int_tools.c */
 int _pow(int, int);
 int _intlen(int);
 char *_itoa(char *, int);
-int _ito_print(int);
+void _ito_print(int, buffer_t *);
 
 /* Unsigned int manipulation tools, from unsigned_tools.c */
 int _uintlen(unsigned int);
-int _uto_print(unsigned int);
+void _uto_print(unsigned int, buffer_t *);
 
 /* Octal and hexadecimal conversion tools, from octahex_tools.c */
 int _get_first_digit(unsigned int, int);
-int _max_recursive(unsigned int, char *, int, int);
-int _max_converter(unsigned int, char *);
-
-/* Double manipulation tools, from --- */
-char *_dtoa(char *, double);
+void _max_recursive(unsigned int, char *, int, int, buffer_t *);
+void _max_converter(unsigned int, char *, buffer_t *);
 
 /** PRINTING FUNCTIONS **/
 
 /* String and char printing, from strings.c */
-int printf_char(va_list);
-int printf_str(va_list);
-int printf_reverse(va_list);
-int printf_rot13(va_list);
+void printf_char(va_list, buffer_t *);
+void printf_str(va_list, buffer_t *);
+void printf_reverse(va_list, buffer_t *);
+void printf_rot13(va_list, buffer_t *);
 
 /* Int and unsigned int printing, from ints.c */
-int printf_int(va_list);
-int printf_unsigned(va_list);
+void printf_int(va_list, buffer_t *);
+void printf_unsigned(va_list, buffer_t *);
 
 /* Unsigned octal and hexadecimal, from octahex.c */
-int printf_un_octal(va_list);
-int printf_un_hex(va_list);
-int printf_un_heX(va_list);
-int printf_un_binary(va_list);
+void printf_un_octal(va_list, buffer_t *);
+void printf_un_hex(va_list, buffer_t *);
+void printf_un_heX(va_list, buffer_t *);
+void printf_un_binary(va_list, buffer_t *);
 
-/* Float and double printing, from --- */
-int printf_float(va_list);
-int printf_double(va_list);
-
-/* Pointer printing, from --- */
-int printf_pointer(va_list);
+/* Pointer printing, from pointer.c */
+void printf_pointer(va_list, buffer_t *);
 
 /** PRINTF **/
 
 /* Main function, from printf.c */
-int (*get_function(char))(va_list);
-int _printf_porcentaje(char, va_list);
+void (*get_function(char))(va_list, buffer_t);
+void _printf_porcentaje(char, va_list, buffer_t *);
+int _printf_iteration(const char *format, va_list args, buffer_t *buffer);
 int _printf(const char *format, ...);
 
 #endif

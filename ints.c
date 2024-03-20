@@ -7,21 +7,16 @@
 *
 * Return: Number of characters printed.
 */
-int printf_int(va_list args)
+void printf_int(va_list args, buffer_t *buffer)
 {
 	int n;
-	int len;
 
 	n = va_arg(args, int);
 
-	len = 0;
-
 	if (n < 0)
-		len += _putchar('-');
+		_buffer_add('-', buffer);
 
-	len += _ito_print(n);
-
-	return (len);
+	_ito_print(n, buffer);
 }
 
 /**
@@ -31,14 +26,11 @@ int printf_int(va_list args)
 *
 * Return: Number of characters printed.
 */
-int printf_unsigned(va_list args)
+void printf_unsigned(va_list args, buffer_t *buffer)
 {
 	unsigned int n;
-	int len;
 
 	n = va_arg(args, unsigned int);
 
-	len = _uto_print(n);
-
-	return (len);
+	_uto_print(n, buffer);
 }

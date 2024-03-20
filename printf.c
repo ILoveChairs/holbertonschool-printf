@@ -1,8 +1,8 @@
 #include "main.h"
-#include <stdlib.h>
-#include <unistd.h>
 #include <stdarg.h>
 #include <stddef.h>
+
+
 
 /**
  * get_print -	Gets the function that corresponds to the given char.
@@ -12,7 +12,7 @@
  * Return:	If c doesn't correspond to anything it returns NULL.
  *		Else function that corresponds to c.
  */
-int (*get_print(char c))(va_list)
+void (*get_print(char c))(va_list, buffer_t *)
 {
 	int i;
 	func funcs[] = {
@@ -50,16 +50,13 @@ int (*get_print(char c))(va_list)
  *
  * Return:		Length of all characters printed.
  */
-int _printf_porcentaje(char typer, va_list args)
+void _printf_porcentaje(char typer, va_list args, buffer_t *buffer)
 {
-	int len;
-	int (*fpointer)(va_list);
-
-	len = 0;
+	void (*fpointer)(va_list, buffer_t *);
 
 	if (typer == '%')
 	{
-		len += _putchar('%');
+		_buffer_add('%', buffer);
 	}
 	else
 	{
@@ -67,16 +64,60 @@ int _printf_porcentaje(char typer, va_list args)
 
 		if (fpointer)
 		{
-			len += fpointer(args);
+			fpointer(args, buffer);
 		}
 		else
 		{
-			len += _putchar('%');
-			len += _putchar(typer);
+			_buffer_add('%', buffer);
+			_buffer_add(typer, buffer);
 		}
 	}
+}
 
-	return (len);
+
+/**
+ * _printf_iteration -	Shortening _printf by dividing task into functions.
+ *			this one iterates through format.
+ *
+ * @:			
+ * @:			
+ *
+ * Return:		Length of output.
+ */
+int _printf_iteration(const char *format, va_list args, buffer_t *buffer)
+{
+	int porcentaje_flag;
+
+	while (*format)
+	{
+		if (porcentaje_flag)
+		{
+			_printf_porcentaje(*format, args, buffer);
+			porcentaje_flag = 0;
+		}
+		else if (*format == '%')
+		{
+			porcentaje_flag = 1;
+		}
+		else
+		{
+			_buffer_add('%', buffer);
+		}
+
+		format++;
+	}
+
+	if (buffer->len > 0)
+	{
+		_buffer_write(buffer);
+	}
+
+	if (porcentaje_flag)
+	{
+		return (-1);
+	}
+
+	return (0);
 }
 
 /**
@@ -89,46 +130,30 @@ int _printf_porcentaje(char typer, va_list args)
  */
 int _printf(const char *format, ...)
 {
-	int i, len;
-	int porcentaje_flag;
-	char *buffer;
-	int buffer_len;
+	int len;
 	va_list args;
+	buffer_t buffer;
 
-	len = 0;
 	if (!format)
-		return (-1);
-	buffer = malloc(1024 * sizeof(char));
-	if (!buffer)
-		return (-1);
-	buffer_len = 0;
-	va_start(args, format);
-	porcentaje_flag = 0;
-	for (i = 0; format[i]; i++)
 	{
-		if (porcentaje_flag)
-		{
-			len += _printf_porcentaje(format[i], args);
-			porcentaje_flag = 0;
-		}
-		else if (format[i] == '%')
-			porcentaje_flag = 1;
-		else
-		{
-			buffer[buffer_len++] = format[i];
-		}
-
-		if (buffer_len == 1024 || porcentaje_flag)
-		{
-			len += write(sizeof(char), buffer, buffer_len);
-			buffer_len = 0;
-		}
-	}
-	if (buffer_len > 0)
-		len += write(sizeof(char), buffer, buffer_len);
-	free(buffer);
-	if (porcentaje_flag)
 		return (-1);
+	}
+
+	buffer.len = 0;
+	buffer.len_total = 0;
+
+	va_start(args, format);
+
+	len = _printf_iteration(format, args, &buffer);
+
 	va_end(args);
+
+	if (len != -1)
+	{
+		len = buffer.len_total;
+	}
+
 	return (len);
 }
+
+

@@ -69,9 +69,8 @@ int _get_reminders(unsigned int integer, int format, int digit)
  *
  * Return:		Length of output.
  */
-int _max_recursive(unsigned int integer, char *numbers, int format, int digit)
+void _max_recursive(unsigned int integer, char *numbers, int format, int digit, buffer_t *buffer)
 {
-	int len;
 	unsigned int to_print;
 
 	if (digit != 0)
@@ -79,13 +78,10 @@ int _max_recursive(unsigned int integer, char *numbers, int format, int digit)
 		to_print = integer - _get_reminders(integer, format, digit);
 		to_print %= _pow(format, digit);
 		to_print /= _pow(format, digit - 1);
-		len = _putchar(numbers[to_print]);
+		_buffer_add(numbers[to_print], buffer);
 
-		len += _max_recursive(integer, numbers, format, digit - 1);
-		return (len);
+		_max_recursive(integer, numbers, format, digit - 1, buffer);
 	}
-
-	return (0);
 }
 
 /**
@@ -99,24 +95,24 @@ int _max_recursive(unsigned int integer, char *numbers, int format, int digit)
  *
  * Return:		Length of output.
  */
-int _max_converter(unsigned int integer, char *numbers)
+void _max_converter(unsigned int integer, char *numbers, buffer_t *buffer)
 {
 	int format;
 	int digit;
-	int len;
 
 	if (!numbers)
-		return (0);
+		return ;
 
 	if (integer == 0)
-		return (_putchar(numbers[0]));
+	{
+		_buffer_add(numbers[0], buffer);
+		return ;
+	}
 
 	format = _strlen(numbers);
 	digit = _get_first_digit(integer, format);
 
-	len = _max_recursive(integer, numbers, format, digit);
-
-	return (len);
+	_max_recursive(integer, numbers, format, digit, buffer);
 }
 
 

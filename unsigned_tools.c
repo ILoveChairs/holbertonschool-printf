@@ -33,14 +33,12 @@ int _uintlen(unsigned int integer)
  *
  * Return:	Number of chars printed.
  */
-int _uto_print(unsigned int integer)
+void _uto_print(unsigned int integer, buffer_t *buffer)
 {
 	int int_len;
-	int len;
 	unsigned int digit_pos;
 	unsigned int first_digit;
 
-	len = 0;
 	int_len = _uintlen(integer) - 1;
 	digit_pos = _pow(10, int_len);
 
@@ -48,15 +46,13 @@ int _uto_print(unsigned int integer)
 	{
 		first_digit = integer / digit_pos;
 
-		len += _putchar(first_digit + 48);
+		_buffer_add(first_digit + 48, buffer);
 
 		integer -= first_digit * digit_pos;
 
 		digit_pos /= 10;
 		int_len--;
 	}
-
-	return (len);
 }
 
 

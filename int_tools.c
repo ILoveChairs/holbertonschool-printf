@@ -73,10 +73,9 @@ char *_itoa(char *str, int integer)
  *
  * Return:	Number of chars printed.
  */
-int _ito_print(int integer)
+void _ito_print(int integer, buffer_t *buffer)
 {
 	int int_len;
-	int len;
 	int digit_pos;
 	int first_digit;
 
@@ -85,7 +84,6 @@ int _ito_print(int integer)
 		integer *= -1;
 	}
 
-	len = 0;
 	int_len = _intlen(integer) - 1;
 	digit_pos = _pow(10, int_len);
 
@@ -95,15 +93,14 @@ int _ito_print(int integer)
 
 		if (first_digit < 0)
 			first_digit *= -1;
-		len += _putchar(first_digit + 48);
+
+		_buffer_add(first_digit + 48, buffer);
 
 		integer += first_digit * digit_pos;
 
 		digit_pos /= 10;
 		int_len--;
 	}
-
-	return (len);
 }
 
 

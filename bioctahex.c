@@ -7,15 +7,11 @@
  *
  * Return:		Number of characters printed.
  */
-int printf_un_octal(va_list args)
+void printf_un_octal(va_list args, buffer_t *buffer)
 {
-	int len;
-
 	char oct[] = "01234567";
 
-	len = _max_converter(va_arg(args, unsigned int), oct);
-
-	return (len);
+	_max_converter(va_arg(args, unsigned int), oct, buffer);
 }
 
 /**
@@ -26,15 +22,11 @@ int printf_un_octal(va_list args)
  *
  * Return:		Number of characters printed.
  */
-int printf_un_hex(va_list args)
+void printf_un_hex(va_list args, buffer_t *buffer)
 {
-	int len;
-
 	char hex[] = "0123456789abcdef";
 
-	len = _max_converter(va_arg(args, unsigned int), hex);
-
-	return (len);
+	_max_converter(va_arg(args, unsigned int), hex, buffer);
 }
 
 /**
@@ -45,15 +37,11 @@ int printf_un_hex(va_list args)
  *
  * Return:		Number of characters printed.
  */
-int printf_un_heX(va_list args)
+void printf_un_heX(va_list args, buffer_t *buffer)
 {
-	int len;
-
 	char heX[] = "0123456789ABCDEF";
 
-	len = _max_converter(va_arg(args, unsigned int), heX);
-
-	return (len);
+	_max_converter(va_arg(args, unsigned int), heX, buffer);
 }
 
 /**
@@ -63,13 +51,9 @@ int printf_un_heX(va_list args)
  *
  * Return:		Number of characters printed.
  */
-int printf_un_binary(va_list args)
+void printf_un_binary(va_list args, buffer_t *buffer)
 {
-	int len;
-
 	char binary[] = "01";
 
-	len = _max_converter(va_arg(args, unsigned int), binary);
-
-	return (len);
+	_max_converter(va_arg(args, unsigned int), binary, buffer);
 }

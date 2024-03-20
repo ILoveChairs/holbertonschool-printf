@@ -1,4 +1,6 @@
 #include "main.h"
+#include <stdio.h>
+
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdarg.h>
@@ -115,9 +117,10 @@ int _printf(const char *format, ...)
 			porcentaje_flag = 1;
 		else
 		{
-			if (buffer_len == 1025)
+			if (buffer_len == 1023)
 			{
 				len += write(sizeof(char), buffer, buffer_len);
+				printf("\n\n%d\n\n", buffer_len);
 				buffer_len = 0;
 			}
 			buffer[buffer_len++] = format[i];

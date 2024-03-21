@@ -61,7 +61,7 @@ char *_reverse_string(char *str)
 	len = _strlen(str);
 	len--;
 
-	for (i = 0; i < len / 2; i++)
+	for (i = 0; i <= len / 2; i++)
 	{
 		tmp = str[i];
 		str[i] = str[len - i];
@@ -81,14 +81,16 @@ char *_reverse_string(char *str)
 char *_rot13(char *str)
 {
 	char c;
-
 	while (*str)
 	{
-		c = *str;
-		if ((c >= 77 && c <= 90) || (c >= 110 && c <= 122))
-			c -= 26;
-		c += 13;
-		*str = c;
+		if ((*str >= 65 && *str <= 90) || (*str >= 97 && *str <= 122))
+		{
+			c = *str;
+			if ((c >= 77 && c <= 90) || (c >= 110 && c <= 122))
+				c -= 26;
+			c += 13;
+			*str = c;
+		}
 		str++;
 	}
 

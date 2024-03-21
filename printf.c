@@ -18,6 +18,7 @@ void (*get_print(char c))(va_list, buffer_t *)
 	func funcs[] = {
 		{'c', printf_char},
 		{'s', printf_str},
+		{'S', printf_Str},
 		{'i', printf_int},
 		{'d', printf_int},
 		{'u', printf_unsigned},

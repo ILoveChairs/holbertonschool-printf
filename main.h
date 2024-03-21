@@ -61,6 +61,7 @@ void _buffer_add_str(char *, buffer_t *);
 
 /* String manipulation, from str_tools.c */
 int _strlen(char *);
+void _bufferize_hex(char, buffer_t *);
 char *_strcpy(char *, char *);
 char *_reverse_string(char *);
 char *_rot13(char *);
@@ -85,6 +86,7 @@ void _max_converter(unsigned int, char *, buffer_t *);
 /* String and char printing, from strings.c */
 void printf_char(va_list, buffer_t *);
 void printf_str(va_list, buffer_t *);
+void printf_Str(va_list, buffer_t *);
 void printf_reverse(va_list, buffer_t *);
 void printf_rot13(va_list, buffer_t *);
 

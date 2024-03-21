@@ -21,6 +21,24 @@ int _strlen(char *str)
 }
 
 /**
+ * _bufferize_hex -	Adds hex form of char a to buffer.
+ *
+ * @a:			Char to bufferize.
+ *
+ * @buffer:		Buffer.
+ */
+void _bufferize_hex(char a, buffer_t *buffer)
+{
+	int c;
+	char heX[] = "0123456789ABCDEF";
+
+	c = (a / 16) % 16;
+	_buffer_add(heX[c], buffer);
+	c = a % 16;
+	_buffer_add(heX[c], buffer);
+}
+
+/**
  * _strcpy -	Copies src to dest.
  *
  * @src:	Source string.
@@ -81,6 +99,7 @@ char *_reverse_string(char *str)
 char *_rot13(char *str)
 {
 	char c;
+
 	while (*str)
 	{
 		if ((*str >= 65 && *str <= 90) || (*str >= 97 && *str <= 122))

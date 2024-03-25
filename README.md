@@ -1,41 +1,36 @@
-Printf is a c function that prints a string to stdout.
+# Printf Function in C
 
-As argument it recieves a formatted string where it replaces the content
-of the next variable that was passed when it sees a '%' char followed by
-the variable type or the format of how you want it printed. Returns
-length of output to stdout.
+The `printf` function in C is used to print a string to the standard output.
 
-For example, if the passed parameters are ("Hello %s %i", "world!", 25),
-it should print out:
-Hello world! 25
+As arguments, it receives a formatted string where it replaces the content of the next variable when it encounters a '%' character followed by the variable type or the format of how you want it printed. It returns the length of the output to stdout.
 
-It does not print an end of line at the end.
+For example, if the passed parameters are `("Hello %s %i", "world!", 25)`, it should print out: `Hello world! 25`
 
-Formats are:
-%c = char,
-%s = string,
-%S = formatted string,
-%i, %d = int,
-%u = unsigned int,
-%b = binary,
-%o = octal,
-%x = hex,
-%X = hex, capitalized,
-%p = pointers
+It does not print an end-of-line character at the end.
 
-%% = literal '%'
+## Supported Formats
 
-If a '%' char is followed by an unrecognized format character it prints both chars.
+- `%c`: character
+- `%s`: string
+- `%S`: formatted string
+- `%i`, `%d`: integer
+- `%u`: unsigned integer
+- `%b`: binary
+- `%o`: octal
+- `%x`: hexadecimal
+- `%X`: hexadecimal (capitalized)
+- `%p`: pointers
+- `%%`: literal '%'
 
-Compiled with 'gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format \*.c'
+If a '%' character is followed by an unrecognized format character, it prints both characters.
 
-How it works?
+## How it works?
 
 This is our Printf Flowchart to show how it works:
 
 ![PRINTF FLOWCHART](https://github.com/ILoveChairs/holbertonschool-printf/assets/135678248/73c97f71-e15d-4af6-8740-5184d41ab8c8)
 
-printf.c holds \_printf() which prints each character normally
+Printf.c holds \_printf() which prints each character normally
 except when it encounters a %. When char is % checks if the next character is
 recognized as a type of variable. If not it prints both the % and the next char.
 If an empty % is at the end it stops and returns -1.
@@ -43,3 +38,15 @@ If an empty % is at the end it stops and returns -1.
 Each char is paired with a printing function. Printing functions rely on
 "tool" functions of the same type. You can find these functions based on the
 type of variable you want to print. "tool" functions are placed in "\_tools" files.
+
+## Compilation
+
+Compiled with:
+
+`gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c`
+
+## Authors
+
+`Matias Davezac`
+
+`Hernán Alegresa`

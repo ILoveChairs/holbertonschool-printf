@@ -28,7 +28,7 @@ If a '%' character is followed by an unrecognized format character, it prints bo
 
 This is our Printf Flowchart to show how it works:
 
-![PRINTF FLOWCHART](https://github.com/ILoveChairs/holbertonschool-printf/assets/135678248/73c97f71-e15d-4af6-8740-5184d41ab8c8)
+![PRINTF FLOWCHART (1)](https://github.com/ILoveChairs/holbertonschool-printf/assets/135678248/17093fc0-2c4d-4e39-a194-a9308160d28c)
 
 Printf.c holds \_printf() which prints each character normally
 except when it encounters a %. When char is % checks if the next character is

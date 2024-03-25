@@ -31,6 +31,10 @@ Compiled with 'gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format \*.c'
 
 How it works?
 
+This is our Printf Flowchart to show how it works:
+
+![PRINTF FLOWCHART](https://github.com/ILoveChairs/holbertonschool-printf/assets/135678248/73c97f71-e15d-4af6-8740-5184d41ab8c8)
+
 printf.c holds \_printf() which prints each character normally
 except when it encounters a %. When char is % checks if the next character is
 recognized as a type of variable. If not it prints both the % and the next char.
